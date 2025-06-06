@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+        "path": ["C:\\Windows\\System32\\cmd.exe"]
+    }
+},
+"terminal.integrated.defaultProfile.windows": "Command Prompt",
+"python.defaultInterpreterPath": "${workspaceFolder}\\venv\\Scripts\\python.exe",
+"editor.wordWrap": "on",
+"python.analysis.extraPaths": ["${workspaceFolder}"],
+"python.analysis.autoImportCompletions": true,
+"python.analysis.indexing": true,
+}

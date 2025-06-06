@@ -1,0 +1,103 @@
+<!--Para poder usar static-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{% static 'css/calculadora/stylesNP.css' %}">
+    <link rel="icon" href="{% static "LogoMatlab.png" %}" type="image/png">
+    <script src="{% static 'js/page_transition.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Método de Newton-Raphson</title>
+    <meta name="author" content="Obryan Mazariegos">
+    <meta name="description" content="Calculadora Metodos">
+</head>
+<body>
+
+    <div class="titulo">
+        <h1>
+            Método de Newton-Raphson
+        </h1>
+    </div>
+
+    <!--Para el contenido del forms-->
+    <form method="post" class="formulario">
+        <!--Para la seguridad del contenido-->
+        {% csrf_token %}
+        <!--Realizamos la renderización-->
+        {{ form.as_p }}
+
+        <div class="botones">
+            <button class="calcular" type="submit">Calcular</button>
+            <a href="{% url 'home' %}" class="volverInicio">Volver al inicio</a>
+        </div>
+    </form>
+
+    <!--Si el resultado es diferente de none-->
+    {% if result is not None %}
+
+        <div class="resultados">
+            <h2>La raíz aproximada es: {{ result }}</h2>
+            
+            <!--Número de iteraciones-->
+            {% if iterations is not None %}
+                <p><strong>Iteraciones realizadas:</strong> {{ iterations }}</p>
+            {% endif %}
+        </div>
+
+        <!--Para la grafica-->
+        {% if plot_base64 %} 
+            
+            <h3>Gráfica de la Función:</h3>
+            <div class="contenedor-de-imagen">
+                <img src="data:image/png;base64,{{ plot_base64 }}" alt="Gráfica de la función y la raíz">
+            </div>
+
+        <!--Si el plot esta vacio-->    
+        {% else %} 
+            <p>No se pudo generar la gráfica (plot_base64 vacío).</p>
+        {% endif %}
+       
+            <!--Pra la tabla de iteraciones-->
+            {% if iterations_data %}
+                <div class="resultados-iteraciones">
+                    <h3>Tabla de Iteraciones:</h3>
+                    <!--Contenedor por si realiza muchas iteraciones-->
+                    <div class="table-container"> 
+                        <table class="tabla-iteraciones">
+                            <thead>
+                                <!--Titulos de las columnas-->
+                                <tr>
+                                    <th>Iteración</th>
+                                    <th>x</th>
+                                    <th>f</th>
+                                    <th>f'</th>
+                                    <th>Error Aproximado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <!--Bucle para ir recorriendo todas las iteraciones-->
+                                {% for data in iterations_data %}
+                                    <tr>
+                                        <td>{{ data.iteration }}</td>
+                                        <td>{{ data.x_n }}</td>
+                                        <td>{{ data.f_x_n }}</td>
+                                        <td>{{ data.df_x_n }}</td>
+                                        <td>{{ data.error_approx }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endif %}
+
+        {% endif %} 
+
+    <!--Por si ocurre un error con la función-->
+    {% if error %}
+        <h2>Error: {{ error }}</h2>
+    {% endif %}
+  
+</body>
+</html>

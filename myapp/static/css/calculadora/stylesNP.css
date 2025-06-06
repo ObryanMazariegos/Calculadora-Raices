@@ -1,0 +1,213 @@
+html{
+    height: auto;
+    min-height: 100%;
+}
+/*Fondo degradado*/
+body{
+    background: linear-gradient(to right, #f72585, #3a0ca3);
+}
+
+/*Para el titulo*/
+.titulo{
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+h1{
+    color: antiquewhite;
+    font-size: 2.4em;
+    text-align: center;
+    text-shadow: 6px 1px 2px rgb(174, 0, 255);
+    
+}
+
+/*Div que contiene la información del formulario*/
+.formulario{
+    max-width: 400px;
+    margin:auto;
+    margin-top: 50px;
+    padding: 20px 20px 20px 20px;
+    border:3px solid #b41c8e;
+    border-radius: 15px;
+    box-shadow: 0px 0px 25px 10px #0001;
+    
+}
+
+
+label{
+    color:#ffffffe5 ;
+}
+
+/*Para todos los inputs*/
+input{
+  border: 2px solid #8A2BE2; 
+  border-radius: 8px;       
+  background-color: #FFFFFF; 
+  color: #333333;           
+  font-size: 18px;        
+}
+
+
+/*Para los dos botones*/
+.botones {
+  display: flex; 
+  gap: 20px;    
+  justify-content: center; 
+  align-items: center;  
+  margin-top: 30px;     
+}
+
+.calcular, .volverInicio {
+  font-size: 18px;              
+  padding: 10px 25px;           
+  border-radius: 8px;            
+  cursor: pointer;               
+  text-decoration: none;         
+  display: inline-block;         
+  /*Transición suave para hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;  
+}
+
+.calcular, .volverInicio {
+  background-color: transparent; 
+  color: #FFFFFF;           
+  border: 2px solid #8A2BE2; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+/*Cuando se pasa enciam de los botones*/
+.volverInicio:hover {
+  background-color: #8A2BE2; 
+  /*Para el efecto de elevación*/
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.calcular:hover {
+  background-color: #8A2BE2; 
+  /*Para el efecto de elevación*/
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/*Para los resultados (raiz e iteraciones)*/
+.resultados{
+    max-width: 400px;
+    margin: auto;
+    margin-top: 60px;
+    color: antiquewhite;
+    font-size: 16px;
+
+}
+
+h3{
+    color: antiquewhite;
+    font-size: 2em;
+    text-align: center;
+    text-shadow: 6px 1px 2px rgb(174, 0, 255);
+    margin-top: 50px;
+
+}
+
+
+/*para el div que contiene a la imagen */
+.contenedor-de-imagen {
+  max-width: 500px; 
+  height: auto; 
+  border: 7px solid #b41c8e;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px 10px #0001;
+}
+
+/*Regla para que la imagen se ajuste dentro del div*/
+.contenedor-de-imagen img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+    /*Por defecto, la página está oculta*/
+    opacity: 0; 
+    /*Duración y tipo de transición*/
+    transition: opacity 0.5s ease-in-out; 
+    /*Para compatibilidad con Safari*/
+    -webkit-transition: opacity 0.5s ease-in-out; 
+}
+
+/*Cuando la página carga, esta clase la hace visible */
+body.page-loaded {
+    opacity: 1;
+}
+
+/*Cuando se inicia la transición de salida (antes de navegar a la nueva página)*/
+body.page-transition-out {
+    /*La página se desvanece*/
+    opacity: 0; 
+}
+
+
+/*div que contiene la tabla de iteraciones */
+.resultados-iteraciones {
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px; 
+    
+    /* Efecto Glassmorphism */
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    color: #fff;
+    text-align: center; 
+}
+
+.resultados-iteraciones h3 {
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+/* div para hacer la tabla scrollable si es muy ancha */
+.table-container {
+    overflow-x: auto; 
+    max-width: 100%; 
+}
+
+/* Estilos para la tabla real */
+.tabla-iteraciones {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-top: 15px; 
+    min-width: 600px; 
+}
+
+.tabla-iteraciones th, .tabla-iteraciones td {
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 10px 12px;
+    text-align: center; 
+    color: #fff;
+}
+
+.tabla-iteraciones th {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em; 
+}
+
+.tabla-iteraciones tr:nth-child(even) {
+    /* Efecto cebra más sutil */
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/*Efecto cuando pase por encima*/
+.tabla-iteraciones tr:hover {
+    background-color: rgba(255, 255, 255, 0.15); 
+}

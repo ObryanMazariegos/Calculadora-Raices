@@ -1,0 +1,73 @@
+<!--Para poder usar static-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{% static 'css/calculadora/styleshome.css' %}">
+    <link rel="icon" href="{% static "LogoMatlab.png" %}" type="image/png">
+    <script src="{% static 'js/page_transition.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Calculadora Metodos</title>
+    <meta name="author" content="Obryan Mazariegos">
+    <meta name="description" content="Calculadora Metodos">
+</head>
+<body>
+
+    <div class="titulo">
+        <h1>
+            CALCULADORA DE RAICES - MÉTODOS NUMÉRICOS
+        </h1>
+    </div>
+
+
+    <div class="contenido">
+        <p class="texto">
+            Seleccione el método que quiera utilizar:
+        </p>    
+
+        <!--Para las opciones de los métodos-->
+        <ul class="opciones">
+            <li><a class="opcionMetodo" href="{% url 'bisection' %}">Método de Bisección</a></li>
+            <li ><a class="opcionMetodo" href="{% url 'newton_raphson' %}">Método de Newton-Raphson</a></li>
+            <li ><a class="opcionMetodo"  href="{% url 'modified_newton_raphson' %}">Método de Newton-Raphson Modificado</a></li>
+        </ul>
+    </div>
+
+    <!--Para mostrar los resultados que almacena la base de datos-->
+    <div class="resultados-anteriores">
+        <h2>Registro de Operaciones</h2>
+        {% if calculos %}
+            <table class="tabla-resultados">
+            
+                <thead>
+                    <!--Para los titulos-->
+                    <tr>
+                        <th>ID</th>
+                        <th>Ecuación</th>
+                        <th>Método Utilizado</th>
+                        <th>Respuesta</th>
+                        <th>Iteraciones</th>
+                        <th>Fecha/Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Bucle para colocar la información en la tabla-->
+                    {% for calc in calculos %}
+                    <tr>
+                        <td>{{ calc.id }}</td>
+                        <td>{{ calc.ecuacion }}</td>
+                        <td>{{ calc.metodo_utilizado }}</td>
+                        <td>{{ calc.respuesta }}</td>
+                        <td>{{ calc.iteraciones }}</td>
+                        <td>{{ calc.fecha_y_hora }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+                <p class="no-data">No hay cálculos anteriores guardados en la base de datos.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
